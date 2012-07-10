@@ -23,8 +23,11 @@ gem "unicode"
 gem "spreadsheet"
 
 gem "unicorn"
-gem "capistrano"
-gem "rvm-capistrano"
+
+group :development do
+    gem "capistrano"
+    gem "rvm-capistrano"
+end
 
 #gem "uglifier"
 #gem "yui-compressor"
