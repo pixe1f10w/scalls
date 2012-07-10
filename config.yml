@@ -1,0 +1,22 @@
+dbname: starstat
+dbuser: postgres
+dbhost: voip.support.core
+dbpass:
+
+memcache_server : 'localhost:11211'
+
+cache_enable: true
+cache_namespace: 'sinatra-calls-memcache'
+cache_default_expiry: 300
+cache_default_compress: false
+
+diskcache_enabled: true
+diskcache_path: 'diskcache'
+diskcache_expiry_enabled: false
+#diskcache_expiry_period: 3600
+diskcache_full_paths: true
+
+development:
+    logging: true
+    cache_logging: true
+    diskcache_logging: true
