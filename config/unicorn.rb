@@ -14,7 +14,7 @@ pid pid_file
 stderr_path err_log
 stdout_path log_file
 
-preload_add true
+preload_app true
 
 before_exec do |srv|
     ENV[ 'BUNDLE_GEMFILE' ] = File.expand_path( '../Gemfile', File.dirname( __FILE__ ) )
