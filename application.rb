@@ -48,7 +48,7 @@ module Calls
         end
     
         before do
-            request.url << '/' if not url =~ /\/$/
+            request.url << '/' if not request.url =~ /\/$/
 
             begin
                 @dbconn = PGconn.open :dbname => settings.dbname, :user => settings.dbuser, 
