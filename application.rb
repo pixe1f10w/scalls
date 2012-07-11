@@ -60,7 +60,7 @@ module Calls
         get '/' do
             now = Date.now
             m, y = month_s( now.month ), now.year
-            redirect "/#{y}/#{m}"
+            redirect "#{request.url}/#{y}/#{m}"
         end
 
         get '/:year/:month/?' do |year, month|
@@ -104,14 +104,14 @@ module Calls
 
                 haml :'calls'
             else
-                redirect '404'
+                redirect "#{request.url}/404"
             end
         end
 
         get '/:year/:month/export/?' do |year, month|
             if year =~ /^\d{2,4}$/ and month =~ /^(0?[1-9]|1[0-2])$/
                 year = '20' + year if year.length == 2
-                redirect '404' if Date.now <= Date.months_last_day( year.to_i, month.to_i )
+                redirect "#{request.url}/404" if Date.now <= Date.months_last_day( year.to_i, month.to_i )
 
                 month = month_s month
                 query = "select g.descr as gp, name as op, dt_start as dt, id_caller as from, \
@@ -168,14 +168,14 @@ module Calls
 =end
                 attachment File.basename detail_file
                 response.set_cookie 'fileDownload', :value => 'true', :path => '/' 
-                File.read detail_file # send_file helper is unusable here because it's nulled the setted cookie
+                File.read detail_file # send_file helper is unusable here because it's nulls cookie
             else
-                redirect '404'
+                redirect "#{request.url}/404"
             end
         end
 
 =begin
-    # styling
+    # styling moved to assets pipeline
     get '/style.css' do
         content_type 'text/css', :charset => 'utf-8'
         sass :style

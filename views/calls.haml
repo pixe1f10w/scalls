@@ -1,16 +1,16 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      %a.brand{:href => "/"} Звонки за месяц
+      %a.brand{:href => "../"} Звонки за месяц
       %span.pull-right
         /%span.spinner{ :id => 'spinner' }
         %span= @month
         - prev_month = @date << 1
-        %a.btn.btn-primary{ :href => "/#{prev_month.year}/#{prev_month.month}", :id => 'prev', :title => 'Предыдущий месяц' } &larr;
+        %a.btn.btn-primary{ :href => "../#{prev_month.year}/#{prev_month.month}", :id => 'prev', :title => 'Предыдущий месяц' } &larr;
         - next_month = @date >> 1
         - condition = Date.now < next_month
-        %a.btn.btn-primary{ :disabled => ( condition ? 'disabled' : nil ), :id => 'next', :href => "/#{next_month.year}/#{next_month.month}", :title => 'Следующий месяц', :onclick => ( condition ? "return false" : nil ) } &rarr;
-        %a.btn.btn-success{ :disabled => ( condition ? 'disabled' : nil ), :id => 'export', :href => ( condition ? nil : "/#{@date.year}/#{@date.month}/export" ), :onclick => ( condition ? "return false" : nil ), :title => 'Выгрузить детализацию исходящих звонков за месяц в Excel' } Экспорт
+        %a.btn.btn-primary{ :disabled => ( condition ? 'disabled' : nil ), :id => 'next', :href => "../#{next_month.year}/#{next_month.month}", :title => 'Следующий месяц', :onclick => ( condition ? "return false" : nil ) } &rarr;
+        %a.btn.btn-success{ :disabled => ( condition ? 'disabled' : nil ), :id => 'export', :href => ( condition ? nil : "../#{@date.year}/#{@date.month}/export" ), :onclick => ( condition ? "return false" : nil ), :title => 'Выгрузить детализацию исходящих звонков за месяц в Excel' } Экспорт
 .container
 - if @list.length > 0
   %table.table.table-striped{ :id => 'calls' }
