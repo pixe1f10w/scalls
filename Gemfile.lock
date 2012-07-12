@@ -47,13 +47,13 @@ GEM
       rack-test
       sinatra (~> 1.3.0)
       tilt (~> 1.3)
-    sinatra-diskcache (0.0.2)
+    sinatra-diskcache (0.0.3)
     sinatra-memcache (0.1.1)
       memcache-client
       sinatra
     spreadsheet (0.7.3)
       ruby-ole (>= 1.0)
-    sprockets (2.4.4)
+    sprockets (2.4.5)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
