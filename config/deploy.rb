@@ -9,6 +9,7 @@ require 'bundler/capistrano'
 
 set :application, "calls"
 set :repository,  "git@github.com:pixe1f10w/scalls.git"
+set :branch, "layoutless"
 
 set :scm, :git
 

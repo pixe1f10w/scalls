@@ -48,9 +48,6 @@ module Calls
         end
     
         before do
-            #request.url << '/' if not request.url =~ /\/$/
-            #request.url = request.url[ 0..-1 ] if request.url =~ /\/$/
-
             begin
                 @dbconn = PGconn.open :dbname => settings.dbname, :user => settings.dbuser, 
                     :host => settings.dbhost, :password => settings.dbpass
@@ -63,8 +60,6 @@ module Calls
         get '/' do
             now = Date.now
             m, y = month_s( now.month ), now.year
-            #request.url = request.url[ 0..-1 ] if request.url =~ /\/$/
-            #redirect "#{request.url}/#{y}/#{m}"
             redirect "#{y}/#{m}"
         end
 
