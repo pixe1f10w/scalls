@@ -23,8 +23,8 @@ class Date
 
         def months_last_day year, month
             d = Date.new year.to_i, month.to_i
-            d = d >> 1 - 1
-            self.new d.year, d.month
+            d = ( d >> 1 ) - 1
+            self.new d.year, d.month, d.day
         end
    end
 end
