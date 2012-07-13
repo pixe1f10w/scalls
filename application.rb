@@ -104,14 +104,18 @@ module Calls
 
                 haml :'calls'
             else
-                redirect "#{request.url}404"
+                #redirect "404"
+                #404
+                raise 'Неверная дата'
             end
         end
 
         get '/:year/:month/export/?' do |year, month|
             if year =~ /^\d{2,4}$/ and month =~ /^(0?[1-9]|1[0-2])$/
                 year = '20' + year if year.length == 2
-                redirect "#{request.url}404" if Date.now <= Date.months_last_day( year.to_i, month.to_i )
+                #redirect "404" if Date.now <= Date.months_last_day( year.to_i, month.to_i )
+                #404 if Date.now <= Date.months_last_day( year.to_i, month.to_i )
+                raise 'Месяц не закрыт' if Date.now <= Date.months_last_day( year.to_i, month.to_i )
 
                 month = month_s month
                 query = "select g.descr as gp, name as op, dt_start as dt, id_caller as from, \
@@ -170,7 +174,8 @@ module Calls
                 response.set_cookie 'fileDownload', :value => 'true', :path => '/' 
                 File.read detail_file # send_file helper is unusable here because it's nulls cookie
             else
-                redirect "#{request.url}404"
+                #redirect "404"
+                raise 'Неверная дата'
             end
         end
 
@@ -181,15 +186,19 @@ module Calls
         sass :style
     end
 =end
+        get '/404' do
+            haml :'404'
+        end
 
     # error handlers
         not_found do
-            haml :'404'
+            #haml :'404'
+            redirect '/404'
         end
 
         error do
             @error = env[ 'sinatra.error' ].message
-            haml :'error'
+            haml :'500'
         end
     end
 end
