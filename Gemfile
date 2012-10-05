@@ -8,7 +8,7 @@ gem "sinatra-diskcache"
 
 gem "haml"
 
-gem "sass"
+gem "sass", "3.1.20"
 #gem "compass"
 
 gem "sprockets"
