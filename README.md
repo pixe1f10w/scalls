@@ -2,7 +2,7 @@
 
 A little application that's showcasing usage of:
 * sinatra
-* sinatra-diskcache gem
+* [sinatra-diskcache](http://github.com/pixe1f10w/sinatra-diskcache) gem
 * sprockets/assets pipeline
 * memcaching
 * xls report generation using spreadsheet gem
